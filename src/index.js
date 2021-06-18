@@ -1,42 +1,35 @@
-class VideoApp {
-    constructor({initalVolumeScale=0.5, playId, muteId, volumeId, videoId}) {
-        this.play = document.getElementById(playId)
-        this.mute = document.getElementById(muteId)
-        this.volume = document.getElementById(volumeId)
-        this.video = document.getElementById(videoId)
-        this.currentVolumeScale = initalVolumeScale
-        this.video.volume = this.currentVolumeScale 
-        this.addEventListener();
-    }
+const play = document.getElementById("play")
+const mute = document.getElementById("mute")
+const volume = document.getElementById("volume")
+const video = document.getElementById("video")
 
-    addEventListener = () => {
-        this.play.addEventListener("click", this.handlePlay)
-        this.mute.addEventListener("click", this.handleMute)
-        this.volume.addEventListener("input", this.handleVolume)
-    }
-    
-    handlePlay = () => {
-        this.video.paused ? this.video.play() : this.video.pause()
-        this.play.innerText = this.video.paused ? "Play" : "Pause"
-    }
+let currentVolumeScale = 0.5
+video.volume = currentVolumeScale 
 
-    handleMute = () => {
-        this.video.muted = this.video.muted ? false : true
-        this.mute.innerText = this.video.muted ? "Unmuted" : "Muted"
-        this.volume.value = this.video.muted ? 0 : this.currentVolumeScale
-    }
+function addListener() {
+    play.addEventListener("click", handlePlay)
+    mute.addEventListener("click", handleMute)
+    volume.addEventListener("input", handleVolume)
+}
 
-    handleVolume = (event) => {
-        this.video.volume = event.target.value
-        this.currentVolumeScale = this.video.volume
-    }
+function handlePlay() {
+    video.paused ? video.play() : video.pause()
+    play.innerText = video.paused ? "Play" : "Pause"
+}
 
+function handleMute() {
+    video.muted = video.muted ? false : true
+    mute.innerText = video.muted ? "Unmuted" : "Muted"
+    volume.value = video.muted ? 0 : currentVolumeScale
+}
+
+function handleVolume (event) {
+    video.volume = event.target.value
+    currentVolumeScale = video.volume
 }
 
 function init () {
-
-new VideoApp({playId:"play", muteId:"mute", volumeId:"volume", videoId:"video"})
-
+    addListener();
 }
 
 init();
