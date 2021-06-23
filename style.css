@@ -1,0 +1,45 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+#videoInner {
+    width: 800px;
+    height: 500px;
+    margin: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#videoController {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 0.2rem;
+    height: 2rem;
+    width: 700px;
+    background-color:mediumaquamarine;
+    border-radius: 5px;
+    padding: 0 1rem;
+    position: absolute;
+    bottom: 35px;
+    transition: all 0.5s ease-in-out;
+}
+
+#timeRange {
+    width: 23rem;
+}
+
+#timeSet {
+    position: relative;
+    bottom: -1px;
+    display: flex;
+}
+
+video {
+    height: 100%;
+    width: 100%;
+}
